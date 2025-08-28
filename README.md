@@ -20,6 +20,7 @@
 | Ветка (перейти) | Описание |
 |-----------------|----------|
 | [week1-hello-react](../../tree/week1-hello-react) | Первое приложение на React, компоненты Header и Footer |
+| [week1-profile-card](../../tree/profile-card) | My Profile Card |
 
 > ✨ Я буду дополнять список новыми ветками по мере добавления проектов.
 
