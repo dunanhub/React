@@ -1,0 +1,16 @@
+.app {
+  min-height: 100%;
+  padding: 24px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 16px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}

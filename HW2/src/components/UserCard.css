@@ -1,0 +1,26 @@
+.user-card {
+  width: 240px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.8);
+}
+
+.user-name {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.user-email {
+  margin: 0;
+  color: #4b5563;
+  word-break: break-all;
+  font-size: 14px;
+}
