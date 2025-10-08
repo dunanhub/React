@@ -1,49 +1,62 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "Formik";
+import * as Yup from "yup";
 
-function validate(values) {
-  const errors = {};
+const Schema = Yup.object({
+  fullName: Yup.string().trim().required("Full Name is required"),
+  email: Yup.string().trim().email("Invalid email format").required("Email is required"),
+  password: Yup.string().trim().min(6, "Password must be at least 6 characters").required("Password is required"),
+  course: Yup.string().oneOf(["Course A", "Course B", "Course C"]).required("Please select a course"),
+  gender: Yup.string().oneOf(["Male", "Female"]).required("Please select a gender"),
+  dateOfBirth: Yup.date().required("Date of Birth is required"),
+  city: Yup.string().trim().required("City is required"),
+  country: Yup.string().required("Country is required"),
+  zipcode: Yup.string().matches(/^\d{5}(-\d{4})?$/, {message: "Zipcode must be in the format 12345 or 12345-6789", excludeEmptyString: true}),
+})
 
-  if (!values.fullName.trim()) {
-    errors.fullName == "FullName is required";
-  }
-  if (!values.email.trim()) {
-    errors.email == "Email is required";
-  }
-  else {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+// function validate(values) {
+//   const errors = {};
+
+//   if (!values.fullName.trim()) {
+//     errors.fullName == "FullName is required";
+//   }
+//   if (!values.email.trim()) {
+//     errors.email == "Email is required";
+//   }
+//   else {
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     
-    if (!emailRegex.test(values.email)) {
-      errors.email = "Invalid email format";
-    }
-  }
-  if (!values.password.trim()) {
-    errors.password == "Password is required";
-  }
-  else if (values.password.length < 6) {
-    errors.password = "Password must be at least 6 characters";
-  }
-  if (!values.course.trim()) {
-    errors.course = "Please select a course";
-  }
-  if (!values.gender.trim()) {
-    errors.gender = "Please select a gender";
-  }
-  if (!values.dateOfBirth.trim()) {
-    errors.dateOfBirth = "Date of Birth is required";
-  }
-  if (!values.city.trim()) {
-    errors.city = "City is required";
-  }
-  if (!values.country.trim()) {
-    errors.country = "Country is required";
-  }
-  if (values.zipcode && !/^\d{5}(-\d{4})?$/.test(values.zipcode)) {
-    errors.zipcode = "Zipcode must be in the format 12345 or 12345-6789";
-  }
+//     if (!emailRegex.test(values.email)) {
+//       errors.email = "Invalid email format";
+//     }
+//   }
+//   if (!values.password.trim()) {
+//     errors.password == "Password is required";
+//   }
+//   else if (values.password.length < 6) {
+//     errors.password = "Password must be at least 6 characters";
+//   }
+//   if (!values.course.trim()) {
+//     errors.course = "Please select a course";
+//   }
+//   if (!values.gender.trim()) {
+//     errors.gender = "Please select a gender";
+//   }
+//   if (!values.dateOfBirth.trim()) {
+//     errors.dateOfBirth = "Date of Birth is required";
+//   }
+//   if (!values.city.trim()) {
+//     errors.city = "City is required";
+//   }
+//   if (!values.country.trim()) {
+//     errors.country = "Country is required";
+//   }
+//   if (values.zipcode && !/^\d{5}(-\d{4})?$/.test(values.zipcode)) {
+//     errors.zipcode = "Zipcode must be in the format 12345 or 12345-6789";
+//   }
 
-  return errors;
-};
+//   return errors;
+// };
 
 const initialValues = {
   fullName: "",
@@ -72,12 +85,10 @@ export default function CourseApplicationForm() {
         <div className="ca-card">
           <Formik
             initialValues={initialValues}
-            validate={validate}
+            validationSchema={Schema}
             onSubmit={(values) => {
               alert(JSON.stringify(values, null, 2));
             }}
-            validateOnBlur
-            validateOnChange
           >
             {({ errors, touched, values }) => (
               <Form className="ca-form">

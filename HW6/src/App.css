@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+  height: 100%;
+}
+
+.ca-wrap {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 24px;
+}
+.ca-title {
+  font-size: 30px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  margin: 0 0 30px;
+  text-align: center;
+}
+.ca-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 10px #f3f4f6;
+  background: #fff;
+}
+.ca-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.ca-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 15px;
+}
+.ca-full {
+  grid-column: 1 / -1;
+}
+.ca-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ca-label {
+  font-weight: 600;
+}
+.ca-req::after {
+  content: '*';
+  color: #ef4444;
+}
+
+.ca-input, .ca-select, .ca-textarea {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  background: #fff;
+}
+.ca-textarea {
+  height: 100px;
+  resize: vertical;
+}
+.ca-input:focus, .ca-select:focus, .ca-textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, .3);
+}
+.ca-input.error, .ca-select.error, .ca-textarea.error {
+  border-color: #ef4444;
+  box-shadow: none;
+}
+.ca-error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: -4px;
+}
+.ca-radio-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ca-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 10px;
+}
+
+.ca-submit {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: filter .15s ease;
+  margin-top: 30px;
+}
+.ca-submit:hover {
+  filter: brightness(0.9);
+}
+.ca-submit:active {
+  filter: brightness(0.8);
+}
+
+@media (max-width: 600px) {
+  .ca-grid, .ca-row {
+    grid-template-columns: 1fr;
+  }
+}
